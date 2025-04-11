@@ -1,6 +1,13 @@
 public class MalTp1 {
     public static void main(String args[]){
-        System.out.println("Hello World!");
+        Car car1 = new Car("Mercides", "4Matic", 2025);
+        Car car2 = new Car("Audi", "Q3", 2023);
+        Car car3 = new Car("renault", "clio 4", 2018);
+
+        Car[] cars = {car1, car2, car3};
+        for (int i =0; i < 3; i++){
+            System.out.println("car no"+i+": brand: "+cars[i].brand+" model of "+cars[i].model+" was made in "+cars[i].year);
+        }
     }
 }
 
