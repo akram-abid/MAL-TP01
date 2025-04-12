@@ -35,6 +35,17 @@ public class MalTp1 {
         for (int i = 0; i < flyingThings.size(); i++) {
             System.out.println(flyingThings.get(i).fly());
         }
+        System.out.println("Third Task: sub-task---------------------------------------------------");
+        ArrayList<AbstractFlyer> AnotherFlyingThings = new ArrayList<>();
+
+        AnotherFlyingThings.add(new AbstractPlane("Boeing 747"));
+        AnotherFlyingThings.add(new AbstractBird("Aigle"));
+        AnotherFlyingThings.add(new AbstractPlane("Airbus A320"));
+        AnotherFlyingThings.add(new AbstractBird("Colibri"));
+
+        for (int i = 0; i < AnotherFlyingThings.size(); i++) {
+            System.out.println(AnotherFlyingThings.get(i).fly());
+        }
     }
 }
 
@@ -151,5 +162,46 @@ class Plane implements Flyer{
 
     public String fly(){
         return "the "+this.type+" plane is flying with passengers ...";
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+abstract class AbstractFlyer {
+
+    protected String name;
+
+    public AbstractFlyer(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public abstract String fly();
+}
+
+class AbstractBird extends AbstractFlyer{
+
+    String name;
+
+    AbstractBird(String name){
+        super(name);
+    }
+
+    @Override
+    public String fly(){
+        return "the "+this.name+" bird type is flying ...";
+    }
+}
+
+class AbstractPlane extends AbstractFlyer {
+    public AbstractPlane(String name) {
+        super(name);
+    }
+
+    @Override
+    public String fly() {
+        return "the "+this.name+" plane is flying with passengers ...";
     }
 }
