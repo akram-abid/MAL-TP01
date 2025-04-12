@@ -98,7 +98,7 @@ public class MalTp1 {
         BankAccount account = new BankAccount();
         account.balance = 100;
 
-        System.out.println("Current balance: " + account.balance);
+        System.out.println("Current account balance: " + account.balance);
 
         try {
             account.withdraw(30);
