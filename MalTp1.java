@@ -90,6 +90,27 @@ public class MalTp1 {
                 personMap.put(key, people.get(i));
             }
         }
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Fifth Task:---------------------------------------------------");
+
+        BankAccount account = new BankAccount();
+        account.balance = 100;
+
+        System.out.println("Current balance: " + account.balance);
+
+        try {
+            account.withdraw(30);
+            System.out.println("After withdrawing 30: " + account.balance);
+
+            account.withdraw(100); 
+            System.out.println("After withdrawing 100: " + account.balance);
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+
+        System.out.println("Balance is: " + account.balance);
     }
 }
 
@@ -266,5 +287,20 @@ class Person {
 
     public int getAge() {
         return age;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////:
+
+
+class BankAccount {
+    double balance;
+
+    void withdraw(double amount) throws Exception {
+        if (amount > balance) {
+            throw new Exception("Insufficient funds! You have only " + balance + "€");
+        } else {
+            balance -= amount;
+        }
     }
 }
