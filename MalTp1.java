@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MalTp1 {
     public static void main(String args[]){
@@ -45,6 +47,48 @@ public class MalTp1 {
 
         for (int i = 0; i < AnotherFlyingThings.size(); i++) {
             System.out.println(AnotherFlyingThings.get(i).fly());
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Forth Task:---------------------------------------------------");
+
+        ArrayList<Person> people = new ArrayList<>();
+
+        people.add(new Person("Alice:", 30));
+        people.add(new Person("Bob:", 22));
+        people.add(new Person("Charlie:", 28));
+
+        System.out.println("Before sorting:");
+        for (Person p : people) {
+            System.out.println(p.getName() + " (" + p.getAge() + " years old)");
+        }
+
+        for (int i = 0; i < people.size(); i++) {
+            for (int j = 0; j < people.size() - 1; j++) {
+                if (people.get(j).getAge() > people.get(j + 1).getAge()) {
+                    // swap
+                    Person temp = people.get(j);
+                    people.set(j, people.get(j + 1));
+                    people.set(j + 1, temp);
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("After sorting:");
+        for (Person p : people) {
+            System.out.println(p.getName() + " (" + p.getAge() + " years old)");
+        }
+
+        HashMap<String, Person> personMap = new HashMap<>();
+
+        for (int i = 0; i < people.size(); i++) {
+            String key = people.get(i).getName();
+            if (!personMap.containsKey(key)) {
+                personMap.put(key, people.get(i));
+            } else {
+                personMap.put(key, people.get(i));
+            }
         }
     }
 }
@@ -203,5 +247,24 @@ class AbstractPlane extends AbstractFlyer {
     @Override
     public String fly() {
         return "the "+this.name+" plane is flying with passengers ...";
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////::::
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 }
